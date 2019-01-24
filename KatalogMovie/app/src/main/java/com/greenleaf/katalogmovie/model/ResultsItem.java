@@ -5,8 +5,26 @@ import com.google.gson.annotations.SerializedName;
 
 public class ResultsItem{
 
-	@SerializedName("overview")
-	private String overview;
+	@SerializedName("vote_count")
+	private int voteCount;
+
+	@SerializedName("id")
+	private int id;
+
+	@SerializedName("video")
+	private boolean video;
+
+	@SerializedName("vote_average")
+	private double voteAverage;
+
+	@SerializedName("title")
+	private String title;
+
+	@SerializedName("popularity")
+	private double popularity;
+
+	@SerializedName("poster_path")
+	private String posterPath;
 
 	@SerializedName("original_language")
 	private String originalLanguage;
@@ -14,44 +32,20 @@ public class ResultsItem{
 	@SerializedName("original_title")
 	private String originalTitle;
 
-	@SerializedName("video")
-	private boolean video;
-
-	@SerializedName("title")
-	private String title;
-
 	@SerializedName("genre_ids")
 	private List<Integer> genreIds;
-
-	@SerializedName("poster_path")
-	private String posterPath;
 
 	@SerializedName("backdrop_path")
 	private String backdropPath;
 
-	@SerializedName("release_date")
-	private String releaseDate;
-
-	@SerializedName("vote_average")
-	private double voteAverage;
-
-	@SerializedName("popularity")
-	private double popularity;
-
-	@SerializedName("id")
-	private int id;
-
 	@SerializedName("adult")
 	private boolean adult;
 
-	@SerializedName("vote_count")
-	private int voteCount;
+	@SerializedName("overview")
+	private String overview;
 
-	public ResultsItem(String title, String description, String date){
-		this.title = title;
-		this.overview = description;
-		this.releaseDate = date;
-	}
+	@SerializedName("release_date")
+	private String releaseDate;
 
 	public void setOverview(String overview){
 		this.overview = overview;
@@ -167,22 +161,22 @@ public class ResultsItem{
 
 	@Override
  	public String toString(){
-		return 
-			"ResultsItem{" + 
-			"overview = '" + overview + '\'' + 
+		return
+			"ResultsItem{" +
+			"vote_count = '" + voteCount + '\'' +
+			",id = '" + id + '\'' +
+			",video = '" + video + '\'' +
+			",vote_average = '" + voteAverage + '\'' +
+			",title = '" + title + '\'' +
+			",popularity = '" + popularity + '\'' +
+			",poster_path = '" + posterPath + '\'' +
 			",original_language = '" + originalLanguage + '\'' + 
-			",original_title = '" + originalTitle + '\'' + 
-			",video = '" + video + '\'' + 
-			",title = '" + title + '\'' + 
-			",genre_ids = '" + genreIds + '\'' + 
-			",poster_path = '" + posterPath + '\'' + 
-			",backdrop_path = '" + backdropPath + '\'' + 
-			",release_date = '" + releaseDate + '\'' + 
-			",vote_average = '" + voteAverage + '\'' + 
-			",popularity = '" + popularity + '\'' + 
-			",id = '" + id + '\'' + 
-			",adult = '" + adult + '\'' + 
-			",vote_count = '" + voteCount + '\'' + 
+			",original_title = '" + originalTitle + '\'' +
+			",genre_ids = '" + genreIds + '\'' +
+			",backdrop_path = '" + backdropPath + '\'' +
+			",adult = '" + adult + '\'' +
+			",overview = '" + overview + '\'' +
+			",release_date = '" + releaseDate + '\'' +
 			"}";
 		}
 }

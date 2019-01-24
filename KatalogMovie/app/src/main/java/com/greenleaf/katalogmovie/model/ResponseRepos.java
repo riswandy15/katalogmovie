@@ -9,14 +9,14 @@ public class ResponseRepos{
 	@SerializedName("page")
 	private int page;
 
+	@SerializedName("total_results")
+	private int totalResults;
+
 	@SerializedName("total_pages")
 	private int totalPages;
 
 	@SerializedName("results")
 	private List<ResultsItem> results;
-
-	@SerializedName("total_results")
-	private int totalResults;
 
 	public void setPage(int page){
 		this.page = page;
@@ -54,10 +54,10 @@ public class ResponseRepos{
  	public String toString(){
 		return 
 			"ResponseRepos{" + 
-			"page = '" + page + '\'' + 
+			"page = '" + page + '\'' +
+			",total_results = '" + totalResults + '\'' +
 			",total_pages = '" + totalPages + '\'' + 
-			",results = '" + results + '\'' + 
-			",total_results = '" + totalResults + '\'' + 
+			",results = '" + results + '\'' +
 			"}";
 		}
 }

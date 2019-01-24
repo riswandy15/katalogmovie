@@ -13,7 +13,11 @@ import android.widget.Toast;
 
 import com.greenleaf.katalogmovie.apiservice.BaseApiService;
 import com.greenleaf.katalogmovie.apiservice.UtilsApi;
+import com.greenleaf.katalogmovie.model.Movie;
+import com.greenleaf.katalogmovie.model.ResponseRepos;
 import com.greenleaf.katalogmovie.model.ResultsItem;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +44,8 @@ public class MainActivity extends AppCompatActivity {
     BaseApiService mApiService;
     MovieAdapter mRepoAdapter;
 
-    List<ResultsItem> repoList = new ArrayList<>();
+
+    List<Movie> repoList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,20 +92,23 @@ public class MainActivity extends AppCompatActivity {
         mApiService.requestRepos(title)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new io.reactivex.Observer<List<ResultsItem>>(){
+                .subscribe(new io.reactivex.Observer<ResponseRepos>(){
                     @Override
                     public void onSubscribe(Disposable d){
 
                     }
 
                     @Override
-                    public void onNext(List<ResultsItem> responseRepos){
-                        for (int i = 0; i < responseRepos.size(); i++){
-                            String title = responseRepos.get(i).getTitle();
-                            String description = responseRepos.get(i).getOverview();
-                            String date = responseRepos.get(i).getReleaseDate();
+                    public void onNext(ResponseRepos responseRepos){
+                        for (int i = 0; i < responseRepos.getTotalResults(); i++){
+                            String title = responseRepos.getResults().get(i).getTitle();
+                            String description = responseRepos.getResults().get(i).getOverview();
+                            String date = responseRepos.getResults().get(i).getReleaseDate();
+//                            String title = responseRepos.get(i).getTitle();
+//                            String description = responseRepos.get(i).getOverview();
+//                            String date = responseRepos.get(i).getReleaseDate();
 
-                            repoList.add(new ResultsItem(title, description, date));
+                            repoList.add(new Movie(title, description, date));
                         }
                     }
 

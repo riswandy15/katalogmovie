@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import com.greenleaf.katalogmovie.model.Movie;
 import com.greenleaf.katalogmovie.model.ResultsItem;
 
 import butterknife.BindView;
@@ -19,10 +20,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
     private static final String TAG = MovieAdapter.class.getSimpleName();
 
     private Context context;
-    private List<ResultsItem> list;
+    private List<Movie> list;
     private AdapterCallback mAdapterCallback;
 
-    public MovieAdapter(Context context, List<ResultsItem> list, AdapterCallback adapterCallback){
+    public MovieAdapter(Context context, List<Movie> list, AdapterCallback adapterCallback){
         this.context = context;
         this.list = list;
         this.mAdapterCallback = adapterCallback;
@@ -36,11 +37,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        ResultsItem item = list.get(position);
+        Movie item = list.get(position);
 
         String title = item.getTitle();
-        String description = item.getOverview();
-        String date = item.getReleaseDate();
+        String description = item.getDescription();
+        String date = item.getDate();
 
         holder.tv_title.setText(title);
         holder.tv_description.setText(description);

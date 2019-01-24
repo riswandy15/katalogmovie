@@ -1,6 +1,9 @@
 package com.greenleaf.katalogmovie.apiservice;
 
+import com.greenleaf.katalogmovie.model.ResponseRepos;
 import com.greenleaf.katalogmovie.model.ResultsItem;
+
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -13,5 +16,5 @@ import io.reactivex.Observable;
 
 public interface BaseApiService {
     @GET("3/search/movie?api_key=9794b8f5fe7dc2310507fc212b73793e&language=en-US")
-    Observable<List<ResultsItem>>  requestRepos(@Query("query") String title);
+    Observable<ResponseRepos>  requestRepos(@Query("query") String title);
 }
